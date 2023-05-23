@@ -1,13 +1,11 @@
 <?php
 
-if(!session_status()) session_start();
-
 function getCache (String $key) 
 {
-    return $_SESSION[$key] ?? null;
+    return $GLOBALS[$key] ?? null;
 }
 
 function setCache (String $key, $value) 
 {
-    return $_SESSION[$key] = $value;
+    return $GLOBALS[$key] = $value;
 }

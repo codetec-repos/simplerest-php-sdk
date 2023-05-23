@@ -44,7 +44,7 @@ class ConfigMap
     public function getApiURL () 
     {
         return !$this->environment 
-            ? 'https://api.sandbox.simplerest.com.br' 
-            : 'https://api.simplerest.com.br';
+            ? 'https://api.client.sandbox.simplerest.com.br' 
+            : 'https://api.client.simplerest.com.br';
     }
 }
