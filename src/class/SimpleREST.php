@@ -30,4 +30,18 @@ class SimpleREST extends ConfigMap
         }
     }
 
+    public function reverseAuthenticationLogout ($token) 
+    {
+        try {
+            if(!$this->getSecretToken()) throw 'Secret Token must be not empty or null';
+            if((!strlen($token) || !is_string($token))) throw 'Token must be string and not empty or null';
+
+            $reverseAuthInstance = new ReverseAuthentication();
+
+            return $reverseAuthInstance->logout($token);
+        } catch (\Exception $error) {
+            return $error;
+        }
+    }
+
 }
