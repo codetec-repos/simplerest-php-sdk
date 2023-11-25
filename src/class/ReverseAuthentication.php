@@ -24,6 +24,10 @@ class ReverseAuthentication extends ConfigMap
                 "Authorization: Bearer {$this->getSecretToken()}"
             );
 
+            $metaData = (object)$metaData;
+
+            if(!isset($metaData->roles)) $metaData->roles = [];
+
             $curl = curl_init();
 
             curl_setopt($curl, CURLOPT_URL, $this->getApiURL() . '/v1/auth/reverse');
@@ -34,7 +38,7 @@ class ReverseAuthentication extends ConfigMap
             // curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
             curl_setopt($curl, CURLOPT_POST, 1);
             curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode([
-                'meta_data' => !$metaData ? [ 'roles' => [] ] : $metaData,
+                'meta_data' => $metaData,
                 'expires' => $expires,
                 'token' => $token
             ]));

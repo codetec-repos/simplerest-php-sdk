@@ -7,9 +7,8 @@ use Codetec\SimplerestPhpSdk\Classes\ConfigMap;
 class SimpleREST extends ConfigMap 
 {
 
-    public function __construct ($secretToken, $environment) 
+    public function __construct ($secretToken) 
     {
-        $this->setEnvironment($environment);
         $this->setSecretToken($secretToken);
     }
 
